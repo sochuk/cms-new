@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LOG_APP">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_TITLE" Type="varchar2" MaxLength="100" />
+    <Property Name="LOG_CONTENT" Type="varchar2" MaxLength="2000" />
+    <Property Name="BROWSER" Type="varchar2" MaxLength="20" />
+    <Property Name="CREATEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="LOG_IIS">
+    <Key>
+      <PropertyRef Name="CIP" />
+      <PropertyRef Name="SIP" />
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="SCWIN32STATUS" Type="number" Precision="38" Scale="0" />
+    <Property Name="SCSUBSTATUS" Type="number" Precision="38" Scale="0" />
+    <Property Name="SCSTATUS" Type="number" Precision="38" Scale="0" />
+    <Property Name="CSHOST" Type="varchar2" MaxLength="500" />
+    <Property Name="CSREFERER" Type="varchar2" MaxLength="500" />
+    <Property Name="CSCOOKIE" Type="varchar2" MaxLength="500" />
+    <Property Name="CSUSERAGENT" Type="varchar2" MaxLength="500" />
+    <Property Name="CSVERSION" Type="varchar2" MaxLength="500" />
+    <Property Name="CIP" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="CSUSERNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="SPORT" Type="number" Precision="38" Scale="0" />
+    <Property Name="CSURISTEM" Type="varchar2" MaxLength="500" />
+    <Property Name="CSURIQUERY" Type="varchar2" MaxLength="500" />
+    <Property Name="SIP" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="SCOMPUTERNAME" Type="varchar2" MaxLength="200" />
+    <Property Name="SSITENAME" Type="varchar2" MaxLength="200" />
+    <Property Name="DATETIMEEVENT" Type="date" />
+    <Property Name="CSBYTES" Type="number" Precision="38" Scale="0" />
+    <Property Name="TIMETAKEN" Type="number" Precision="38" Scale="0" />
+    <Property Name="TOTALTAKEN" Type="number" Precision="38" Scale="0" />
+    <Property Name="CSMETHOD" Type="varchar2" MaxLength="20" />
+    <Property Name="LOG_DATE" Type="date" />
+    <Property Name="LOG_IPSERVER" Type="varchar2" MaxLength="20" />
+    <Property Name="LOG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_YEAR" Type="number" Precision="38" Scale="0" />
+    <Property Name="LOG_MONTH" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'CMS.LOG_IIS_SUMMARY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LOG_IIS_SUMMARY">
+          <Property Name="DATES" Type="date" />
+          <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="SERVER_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="YEAR" Type="number" Precision="38" Scale="0" />
+          <Property Name="MONTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="DAY" Type="number" Precision="38" Scale="0" />
+          <Property Name="SCSTATUS" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALTAKEN" Type="number" Precision="38" Scale="0" />
+          <Property Name="TIMETAKEN" Type="number" Precision="38" Scale="0" />
+        </EntityType>-->
+  <EntityType Name="LOG_PERSO">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CARDUID" Type="varchar2" MaxLength="250" />
+    <Property Name="CONTROLNUMBER" Type="varchar2" MaxLength="250" />
+    <Property Name="MANUFACTURERCODE" Type="varchar2" MaxLength="250" />
+    <Property Name="PERSOSITE" Type="varchar2" MaxLength="250" />
+    <Property Name="PERSO_DATE" Type="date" />
+    <Property Name="ERROR_CODE" Type="varchar2" MaxLength="250" />
+    <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="CONTRACT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="IS_COMMIT" Type="number" Precision="38" Scale="0" />
+    <Property Name="IP_REQUEST" Type="varchar2" MaxLength="20" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="IP_ADDRESS" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="LOG_PERSO_COUNT">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+      <PropertyRef Name="CONTRACT_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTRACT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CURRENT_HIT" Type="number" Precision="38" Scale="0" />
+    <Property Name="SUCCESS_HIT" Type="number" Precision="38" Scale="0" />
+    <Property Name="FAIL_HIT" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'CMS.LOG_PERSO_SUMMARY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LOG_PERSO_SUMMARY">
+          <Property Name="DATES" Type="date" />
+          <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="SERVER_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="YEAR" Type="number" Precision="38" Scale="0" />
+          <Property Name="MONTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="DAY" Type="number" Precision="38" Scale="0" />
+          <Property Name="TOTALTAKEN" Type="number" Precision="38" Scale="0" />
+          <Property Name="IS_COMMIT" Type="number" Precision="38" Scale="0" />
+          <Property Name="CONTRACT_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>-->
+  <EntityType Name="LOG_USER">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_DATE" Type="date" />
+    <Property Name="LOG_TITLE" Type="varchar2" MaxLength="250" />
+    <Property Name="LOG_TYPE" Type="number" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="MODULE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="LOCAL_IP" Type="varchar2" MaxLength="32" />
+    <Property Name="REMOTE_IP" Type="varchar2" MaxLength="32" />
+    <Property Name="LOCATION" Type="varchar2" MaxLength="2" />
+    <Property Name="BROWSER" Type="varchar2" MaxLength="25" />
+    <Property Name="LOG_CONTENT" Type="varchar2" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="LOG_YEAR">
+    <Key>
+      <PropertyRef Name="FULLYEAR" />
+    </Key>
+    <Property Name="FULLYEAR" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_ACCESS">
+    <Key>
+      <PropertyRef Name="MODULE_ID" />
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="MODULE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GROUP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="M_COMPANY">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="COMPANY_DESC" Type="varchar2" MaxLength="250" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="M_CONFIGURATION">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TELEGRAM_API" Type="varchar2" MaxLength="250" />
+    <Property Name="SMTP_MAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="SMTP_SERVER" Type="varchar2" MaxLength="100" />
+    <Property Name="SMTP_PORT" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="SMTP_PASSWORD" Type="varchar2" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="M_CONTRACT">
+    <Key>
+      <PropertyRef Name="CONTRACT_ID" />
+    </Key>
+    <Property Name="CONTRACT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTRACT_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="CONTRACT_DESC" Type="varchar2" MaxLength="200" />
+    <Property Name="ATTACHMENT" Type="varchar2" MaxLength="2000" />
+    <Property Name="PERIOD_START" Type="date" />
+    <Property Name="PERIOD_END" Type="date" />
+    <Property Name="QUOTA" Type="number" Precision="38" Scale="0" />
+    <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="M_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GROUP_NAME" Type="varchar2" MaxLength="200" />
+    <Property Name="GROUP_DESC" Type="varchar2" MaxLength="500" />
+    <Property Name="ROLE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="M_ICON">
+    <Key>
+      <PropertyRef Name="ICON_CODE" />
+    </Key>
+    <Property Name="ICON_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="ICON_NAME" Type="varchar2" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="M_MODULE">
+    <Key>
+      <PropertyRef Name="MODULE_ID" />
+    </Key>
+    <Property Name="MODULE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TYPE_CODE" Type="varchar2" MaxLength="25" />
+    <Property Name="MODULE_NAME" Type="varchar2" MaxLength="100" />
+    <Property Name="MODULE_DESC" Type="varchar2" MaxLength="250" />
+    <Property Name="MODULE_TITLE" Type="varchar2" MaxLength="100" />
+    <Property Name="MODULE_ROOT" Type="number" Precision="38" Scale="0" />
+    <Property Name="MODULE_ICON" Type="varchar2" MaxLength="100" />
+    <Property Name="MODULE_URL" Type="varchar2" MaxLength="250" />
+    <Property Name="MODULE_TYPE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISVISIBLE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ORDER_NO" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="M_ROLE">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ROLE_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="ROLE_DESC" Type="varchar2" MaxLength="250" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_CREATE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_UPDATE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_DELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_EXPORT" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_IMPORT" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALLOW_ENABLEDISABLE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="M_SERVER">
+    <Key>
+      <PropertyRef Name="SERVER_ID" />
+    </Key>
+    <Property Name="SERVER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SERVER_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="SERVER_DESC" Type="varchar2" MaxLength="200" />
+    <Property Name="IP_ADDRESS" Type="varchar2" MaxLength="20" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="LOG_PATH" Type="varchar2" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="M_SETTING">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GRID_PAGESIZE" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_THEME" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_ZEBRACOLOR" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_WRAP_COLUMN" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_WRAP_CELL" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFILTERROW" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFILTERBAR" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_SELECTBYROW" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_FOCUSEROW" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_ELLIPSIS" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFOOTER" Type="number" Precision="38" Scale="0" />
+    <Property Name="GRID_RESPONSIVE" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="M_THEME">
+    <Key>
+      <PropertyRef Name="THEME_ID" />
+    </Key>
+    <Property Name="THEME_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="THEME_NAME" Type="varchar2" MaxLength="50" />
+    <Property Name="THEME_DESC" Type="varchar2" MaxLength="500" />
+    <Property Name="THEME_LOCATION" Type="varchar2" MaxLength="500" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="M_TOKEN">
+    <Key>
+      <PropertyRef Name="TOKEN_ID" />
+    </Key>
+    <Property Name="TOKEN_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USER_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="TOKEN" Type="varchar2" MaxLength="6" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="M_USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="20" />
+    <Property Name="FULLNAME" Type="varchar2" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="TELEGRAM_ID" Type="varchar2" MaxLength="50" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="18" />
+    <Property Name="PHOTO" Type="varchar2" MaxLength="100" />
+    <Property Name="GENDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="GROUP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISREQUIRED_TOKEN" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="THEME_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOTES" Type="varchar2" MaxLength="4000" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="4000" />
+    <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="M_VENDOR">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="VENDOR_NAME" Type="varchar2" MaxLength="20" />
+    <Property Name="VENDOR_DESC" Type="varchar2" MaxLength="200" />
+    <Property Name="ISACTIVE" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="UPDATEDATE" Type="date" />
+    <Property Name="DELETEDATE" Type="date" />
+    <Property Name="CREATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="number" Precision="38" Scale="0" />
+    <Property Name="VENDOR_COLOR" Type="number" Precision="38" Scale="0" />
+    <Property Name="IP_ADDRESS" Type="varchar2" MaxLength="20" />
+    <Property Name="PERSOSITE" Type="varchar2" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="MESSAGE">
+    <Key>
+      <PropertyRef Name="MESSAGE_ID" />
+    </Key>
+    <Property Name="USER_FROM" Type="number" Precision="38" Scale="0" />
+    <Property Name="USER_TO" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISREAD" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="MESSAGE_CONTENT" Type="varchar2" MaxLength="3000" />
+    <Property Name="MESSAGE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICATION">
+    <Key>
+      <PropertyRef Name="NOTIF_ID" />
+    </Key>
+    <Property Name="NOTIF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOTIF_TITLE" Type="varchar2" MaxLength="200" />
+    <Property Name="NOTIF_MESSAGE" Type="varchar2" MaxLength="500" />
+    <Property Name="NOTIF_TYPE" Type="number" Precision="38" Scale="0" />
+    <Property Name="TO_USER_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="ISREAD" Type="number" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="date" />
+    <Property Name="URL" Type="varchar2" MaxLength="3000" />
+  </EntityType>
+  <Association Name="LOG_PERSO_CONTRACT">
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="0..1" />
+    <End Role="LOG_PERSO" Type="Self.LOG_PERSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_CONTRACT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_SUM_CONTRACT">
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="1" />
+    <End Role="LOG_PERSO_COUNT" Type="Self.LOG_PERSO_COUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_CONTRACT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO_COUNT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_SUM_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="1" />
+    <End Role="LOG_PERSO_COUNT" Type="Self.LOG_PERSO_COUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO_COUNT">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="LOG_PERSO" Type="Self.LOG_PERSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_USER_MODULE">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="0..1" />
+    <End Role="LOG_USER" Type="Self.LOG_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="LOG_USER">
+        <PropertyRef Name="MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_USER_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="LOG_USER" Type="Self.LOG_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="LOG_USER">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_ACCESS_GROUP">
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="1" />
+    <End Role="M_ACCESS" Type="Self.M_ACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_GROUP">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="M_ACCESS">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_ACCESS_MODULE">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="1" />
+    <End Role="M_ACCESS" Type="Self.M_ACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="M_ACCESS">
+        <PropertyRef Name="MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_CONFIGURATION_COMPANY">
+    <End Role="M_COMPANY" Type="Self.M_COMPANY" Multiplicity="1" />
+    <End Role="M_CONFIGURATION" Type="Self.M_CONFIGURATION" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="M_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="M_CONFIGURATION">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_CONTRACT_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="M_CONTRACT">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_GROUP_ROLE">
+    <End Role="M_ROLE" Type="Self.M_ROLE" Multiplicity="0..1" />
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_ROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="M_GROUP">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_MODULE_ICON">
+    <End Role="M_ICON" Type="Self.M_ICON" Multiplicity="0..1" />
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_ICON">
+        <PropertyRef Name="ICON_CODE" />
+      </Principal>
+      <Dependent Role="M_MODULE">
+        <PropertyRef Name="MODULE_ICON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_MODULE_ROOT">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="0..1" />
+    <End Role="M_MODULE1" Type="Self.M_MODULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="M_MODULE1">
+        <PropertyRef Name="MODULE_ROOT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_SETTING_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="1" />
+    <End Role="M_SETTING" Type="Self.M_SETTING" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="M_SETTING">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_TOKEN_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="M_TOKEN" Type="Self.M_TOKEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="M_TOKEN">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_COMPANY">
+    <End Role="M_COMPANY" Type="Self.M_COMPANY" Multiplicity="1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_GROUP">
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="0..1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_GROUP">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_THEME">
+    <End Role="M_THEME" Type="Self.M_THEME" Multiplicity="1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_THEME">
+        <PropertyRef Name="THEME_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="THEME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MESSAGE_FROM">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="MESSAGE">
+        <PropertyRef Name="USER_FROM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MESSAGE_TO">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="MESSAGE">
+        <PropertyRef Name="USER_TO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICATION_TO">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="NOTIFICATION" Type="Self.NOTIFICATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="NOTIFICATION">
+        <PropertyRef Name="TO_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="LOG_APP" EntityType="Self.LOG_APP" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="LOG_IIS" EntityType="Self.LOG_IIS" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="LOG_PERSO" EntityType="Self.LOG_PERSO" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="LOG_PERSO_COUNT" EntityType="Self.LOG_PERSO_COUNT" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="LOG_USER" EntityType="Self.LOG_USER" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="LOG_YEAR" EntityType="Self.LOG_YEAR" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_ACCESS" EntityType="Self.M_ACCESS" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_COMPANY" EntityType="Self.M_COMPANY" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_CONFIGURATION" EntityType="Self.M_CONFIGURATION" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_CONTRACT" EntityType="Self.M_CONTRACT" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_GROUP" EntityType="Self.M_GROUP" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_ICON" EntityType="Self.M_ICON" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_MODULE" EntityType="Self.M_MODULE" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_ROLE" EntityType="Self.M_ROLE" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_SERVER" EntityType="Self.M_SERVER" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_SETTING" EntityType="Self.M_SETTING" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_THEME" EntityType="Self.M_THEME" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_TOKEN" EntityType="Self.M_TOKEN" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_USER" EntityType="Self.M_USER" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="M_VENDOR" EntityType="Self.M_VENDOR" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="MESSAGE" EntityType="Self.MESSAGE" Schema="KMS" store:Type="Tables" />
+    <EntitySet Name="NOTIFICATION" EntityType="Self.NOTIFICATION" Schema="KMS" store:Type="Tables" />
+    <AssociationSet Name="LOG_PERSO_CONTRACT" Association="Self.LOG_PERSO_CONTRACT">
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+      <End Role="LOG_PERSO" EntitySet="LOG_PERSO" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_SUM_CONTRACT" Association="Self.LOG_PERSO_SUM_CONTRACT">
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+      <End Role="LOG_PERSO_COUNT" EntitySet="LOG_PERSO_COUNT" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_SUM_VENDOR" Association="Self.LOG_PERSO_SUM_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="LOG_PERSO_COUNT" EntitySet="LOG_PERSO_COUNT" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_VENDOR" Association="Self.LOG_PERSO_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="LOG_PERSO" EntitySet="LOG_PERSO" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_USER_MODULE" Association="Self.LOG_USER_MODULE">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="LOG_USER" EntitySet="LOG_USER" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_USER_USER" Association="Self.LOG_USER_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="LOG_USER" EntitySet="LOG_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_ACCESS_GROUP" Association="Self.M_ACCESS_GROUP">
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+      <End Role="M_ACCESS" EntitySet="M_ACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="M_ACCESS_MODULE" Association="Self.M_ACCESS_MODULE">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="M_ACCESS" EntitySet="M_ACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="M_CONFIGURATION_COMPANY" Association="Self.M_CONFIGURATION_COMPANY">
+      <End Role="M_COMPANY" EntitySet="M_COMPANY" />
+      <End Role="M_CONFIGURATION" EntitySet="M_CONFIGURATION" />
+    </AssociationSet>
+    <AssociationSet Name="M_CONTRACT_VENDOR" Association="Self.M_CONTRACT_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+    </AssociationSet>
+    <AssociationSet Name="M_GROUP_ROLE" Association="Self.M_GROUP_ROLE">
+      <End Role="M_ROLE" EntitySet="M_ROLE" />
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+    </AssociationSet>
+    <AssociationSet Name="M_MODULE_ICON" Association="Self.M_MODULE_ICON">
+      <End Role="M_ICON" EntitySet="M_ICON" />
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+    </AssociationSet>
+    <AssociationSet Name="M_MODULE_ROOT" Association="Self.M_MODULE_ROOT">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="M_MODULE1" EntitySet="M_MODULE" />
+    </AssociationSet>
+    <AssociationSet Name="M_SETTING_USER" Association="Self.M_SETTING_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="M_SETTING" EntitySet="M_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="M_TOKEN_USER" Association="Self.M_TOKEN_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="M_TOKEN" EntitySet="M_TOKEN" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_COMPANY" Association="Self.M_USER_COMPANY">
+      <End Role="M_COMPANY" EntitySet="M_COMPANY" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_GROUP" Association="Self.M_USER_GROUP">
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_THEME" Association="Self.M_USER_THEME">
+      <End Role="M_THEME" EntitySet="M_THEME" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_VENDOR" Association="Self.M_USER_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="MESSAGE_FROM" Association="Self.MESSAGE_FROM">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="MESSAGE" EntitySet="MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="MESSAGE_TO" Association="Self.MESSAGE_TO">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="MESSAGE" EntitySet="MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICATION_TO" Association="Self.NOTIFICATION_TO">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="NOTIFICATION" EntitySet="NOTIFICATION" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e49966beb794ffa8ce845e792451776" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="Model.LOG_APP" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOG_IIS" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOG_PERSO" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOG_PERSO_COUNT" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOG_USER" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOG_YEAR" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_ACCESS" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_COMPANY" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_CONFIGURATION" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_CONTRACT" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_GROUP" Width="1.5" PointX="0.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_ICON" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_MODULE" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_ROLE" Width="1.5" PointX="1.5" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_SERVER" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_SETTING" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_THEME" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_TOKEN" Width="1.5" PointX="5.25" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_USER" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.M_VENDOR" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MESSAGE" Width="1.5" PointX="5.25" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NOTIFICATION" Width="1.5" PointX="5.25" PointY="31.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.LOG_PERSO_CONTRACT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LOG_PERSO_VENDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LOG_PERSO_SUM_CONTRACT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LOG_PERSO_SUM_VENDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LOG_USER_MODULE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LOG_USER_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_ACCESS_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_ACCESS_MODULE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_CONFIGURATION_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_USER_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_CONTRACT_VENDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_GROUP_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_USER_GROUP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_MODULE_ICON" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_MODULE_ROOT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_SETTING_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_USER_THEME" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_TOKEN_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.M_USER_VENDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MESSAGE_FROM" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MESSAGE_TO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.NOTIFICATION_TO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

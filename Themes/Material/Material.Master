@@ -1,0 +1,652 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Material.Master.cs" Inherits="CMS.Themes.Material.MaterialSite" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/favicon.png" rel="icon" type="image/png" />
+    <link href='//cloudflare.com' rel='dns-prefetch' />
+    <link href='//cdnjs.cloudflare.com' rel='dns-prefetch' />
+    <link href='//dnjs.cloudflare.com' rel='dns-prefetch' />
+    <link href='//ajax.googleapis.com' rel='dns-prefetch' />
+    <link href='//fonts.googleapis.com' rel='dns-prefetch' />
+    <link href='//fonts.gstatic.com' rel='dns-prefetch' />
+    <link href='//geobytes.com' rel='dns-prefetch' />
+    <link href='//gd.geobytes.com' rel='dns-prefetch' />
+    <asp:PlaceHolder runat="server">
+        <%: Styles.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() +"/css/iconpack") %>
+        <%: Styles.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() +"/css/light") %>      
+    </asp:PlaceHolder>
+    <title><%: Page.Title == "" ? Application.Name() : Page.Title %></title>
+    <style type="text/css">
+        a[href*="www.devexpress.com"], body > div:first-child[style*="padding"] {
+            display: none !important;
+        }
+    </style>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" runat="server" />
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/themes/material/js/jquery") %> 
+    </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body class="body-wrapper">
+    <% string host = Request.Url.GetLeftPart(UriPartial.Authority) + (Request.ApplicationPath == "/" ? string.Empty : HttpContext.Current.Request.ApplicationPath); %>
+    <%: Scripts.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() + "/js/preloader") %>
+    <script>let host = "<%= host %>";</script>
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open pr-3">
+        <div class="mdc-drawer__content">
+            <div class="mdc-card bg-transparent pb-1 nobox">
+                <img src="~/Content/images/kemendagri.png" class="img-fluid mx-auto d-block" width="80" runat="server" />
+            </div>
+            <div class="user-info text-center pb-3 m-0 bg-black">
+                <% Response.Write("<img width=\"100\" height=\"100\" style=\"cursor:pointer;display:none\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" class=\"img-lg rounded-circle my-0\" src=\"" + M_User.getPhoto() + "\" alt=\"" + M_User.getFullname() + "\" data-initial=\"" + M_User.getInitial() + "\" />"); %>
+                <div class="mt-1" id="fullname"><strong><%: (HttpContext.Current.User.Identity.Get_Fullname()).ToTitleCase() %></strong></div>
+                <div class="text-muted"><small><%: (HttpContext.Current.User.Identity.Get_GroupName()) %></small></div>
+
+            </div>
+            <div class="mdc-list-group mb-5">                
+                <nav class="mdc-list mdc-drawer-menu">
+                    <div class="mdc-list-item mdc-drawer-item">
+                        <a title="Card Management System Dashboard" class="mdc-drawer-link" href="~/cpanel" runat="server">
+                            <i class="mdc-list-item__start-detail mdc-drawer-item-icon fa fa fa-tachometer-alt" aria-hidden="true"></i>
+                            <span class="text-truncate">Dashboard</span>
+                        </a>
+                    </div>
+                    <div class="mdc-list-item mdc-drawer-item">
+                        <a title="My Account" class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="profile">
+                            <i class="mdc-list-item__start-detail mdc-drawer-item-icon fa fa-user-circle" aria-hidden="true"></i>
+                            <span class="text-truncate">My Account</span>
+                            <i class="mdc-drawer-arrow material-icons fa fa-user-cirlce">chevron_right</i>
+                        </a>
+                        <div class="mdc-expansion-panel" id="profile">
+                            <nav class="mdc-list mdc-drawer-submenu">
+                                <div class="mdc-list-item mdc-drawer-item border-left-custom-muted">
+                                    <a title="My Profile" class="mdc-drawer-link" href="<%= host %>/account/profile">
+                                        <i class="mdc-list-item__start-detail mdc-drawer-item-icon"></i>
+                                        <span class="text-truncate">My Profile</span>
+                                    </a>
+                                </div>
+                                <div class="mdc-list-item mdc-drawer-item border-left-custom-muted d-none">
+                                    <a title="My Notification" id="__menu_notification" class="mdc-drawer-link" href="<%= host %>/account/notification">
+                                        <i class="mdc-list-item__start-detail mdc-drawer-item-icon"></i>
+                                        <span class="text-truncate">Notification</span>
+                                    </a>
+                                </div>
+                                <div class="mdc-list-item mdc-drawer-item border-left-custom-muted d-none">
+                                    <a title="My Message" id="__menu_message" class="mdc-drawer-link" href="<%= host %>/account/message">
+                                        <i class="mdc-list-item__start-detail mdc-drawer-item-icon"></i>
+                                        <span class="text-truncate">Message</span>
+                                    </a>
+                                </div>
+                                <div class="mdc-list-item mdc-drawer-item border-left-custom-muted">
+                                    <a title="Change my password" class="mdc-drawer-link" href="<%= host %>/account/changepassword">
+                                        <i class="mdc-list-item__start-detail mdc-drawer-item-icon"></i>
+                                        <span class="text-truncate">Change password</span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                    <%                      
+                        foreach (DataRow row in menu_root.Rows)
+                        {
+                            string list = "";
+                            list += "<div class=\"mdc-list-item mdc-drawer-item\">";
+                            list += "<a title=\"" + row["module_name"].ToString() + "\" class=\"mdc-expansion-panel-link\" data-toggle=\"expansionPanel\" data-id=\"" + row["module_id"] + "\" data-target=\"menu" + row["module_id"] + "\" href=\"#\" runat=\"server\">";
+                            if (row["module_icon"] != null || row["module_icon"].ToString() != "")
+                            {
+                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + row["module_icon"].ToString() + "\"></i>";
+                            }
+                            list += "<span class=\"text-truncate\">" + row["module_name"].ToString() + "</span>";
+                            list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                            list += "</a>";
+                            list += "<div class=\"mdc-expansion-panel\" id=\"menu" + row["module_id"] + "\">";
+                            list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+
+                            var smenu = (from a in menu_sub.AsEnumerable() where a["module_root"].ToInteger() == (int)row["module_id"].ToInteger() select a).ToList();
+                            foreach (var sub_menu in smenu)
+                            {
+                                var s2menu = (from a in menu_sub.AsEnumerable()
+                                              where a["module_root"].ToInteger() == (int)sub_menu["module_id"].ToInteger()
+                                              select a).ToList();
+
+                                if (s2menu.Count == 0)
+                                {
+                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                    list += "<a title=\"" + sub_menu["module_name"].ToString() + "\" data-id=\"" + sub_menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_menu["module_url"] + "\">";
+                                    if (sub_menu["module_icon"] != null || sub_menu["module_icon"].ToString() != "")
+                                    {
+                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_menu["module_icon"].ToString() + "\"></i>";
+                                    }
+                                    list += "<span class=\"text-truncate\">" + sub_menu["module_name"].ToString() + "</span>";
+                                    list += "</a>";
+                                    list += "</div>";
+                                }
+                                else
+                                {
+                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                    list += "<a title=\"" + sub_menu["module_name"].ToString() + "\" data-id=\"" + sub_menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                    if (sub_menu["module_icon"] != null || sub_menu["module_icon"].ToString() != "")
+                                    {
+                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_menu["module_icon"].ToString() + "\"></i>";
+                                        if (sub_menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                    }
+                                    list += "<span class=\"text-truncate\">" + sub_menu["module_name"].ToString() + "</span>";
+                                    list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                    list += "</a>";
+                                    list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_menu["module_id"] + "\">";
+                                    list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                    foreach (var sub_s2menu in s2menu)
+                                    {
+                                        var s3menu = (from a in menu_sub.AsEnumerable()
+                                                      where a["module_root"].ToInteger() == (int)sub_s2menu["module_id"].ToInteger()
+                                                      select a).ToList();
+
+                                        if (s3menu.Count == 0)
+                                        {
+                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                            list += "<a title=\"" + sub_s2menu["module_name"].ToString() + "\" data-id=\"" + sub_s2menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s2menu["module_url"] + "\">";
+                                            if (sub_s2menu["module_icon"] != null || sub_s2menu["module_icon"].ToString() != "")
+                                            {
+                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s2menu["module_icon"].ToString() + "\"></i>";
+                                            }
+                                            list += "<span class=\"text-truncate\">" + sub_s2menu["module_name"].ToString() + "</span>";
+                                            list += "</a>";
+                                            list += "</div>";
+                                        }
+                                        else
+                                        {
+                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                            list += "<a title=\"" + sub_s2menu["module_name"].ToString() + "\" data-id=\"" + sub_s2menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_s2menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                            if (sub_s2menu["module_icon"] != null || sub_s2menu["module_icon"].ToString() != "")
+                                            {
+                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s2menu["module_icon"].ToString() + "\"></i>";
+                                                if (sub_s2menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                            }
+                                            list += "<span class=\"text-truncate\">" + sub_s2menu["module_name"].ToString() + "</span>";
+                                            list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                            list += "</a>";
+                                            list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_s2menu["module_id"] + "\">";
+                                            list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                            foreach (var sub_s3menu in s3menu)
+                                            {
+                                                var s4menu = (from a in menu_sub.AsEnumerable()
+                                                              where a["module_root"].ToInteger() == (int)sub_s3menu["module_id"].ToInteger()
+                                                              select a).ToList();
+
+                                                if (s4menu.Count == 0)
+                                                {
+                                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                    list += "<a title=\"" + sub_s3menu["module_name"].ToString() + "\" data-id=\"" + sub_s3menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s3menu["module_url"] + "\">";
+                                                    if (sub_s3menu["module_icon"] != null || sub_s3menu["module_icon"].ToString() != "")
+                                                    {
+                                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s3menu["module_icon"].ToString() + "\"></i>";
+                                                    }
+                                                    list += "<span class=\"text-truncate\">" + sub_s3menu["module_name"].ToString() + "</span>";
+                                                    list += "</a>";
+                                                    list += "</div>";
+                                                }
+                                                else
+                                                {
+                                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                    list += "<a title=\"" + sub_s3menu["module_name"].ToString() + "\" data-id=\"" + sub_s3menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_s3menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                                    if (sub_s3menu["module_icon"] != null || sub_s3menu["module_icon"].ToString() != "")
+                                                    {
+                                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s3menu["module_icon"].ToString() + "\"></i>";
+                                                        if (sub_s3menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                                    }
+                                                    list += "<span class=\"text-truncate\">" + sub_s3menu["module_name"].ToString() + "</span>";
+                                                    list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                                    list += "</a>";
+                                                    list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_s3menu["module_id"] + "\">";
+                                                    list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                                    foreach (var sub_s4menu in s4menu)
+                                                    {
+                                                        var s5menu = (from a in menu_sub.AsEnumerable()
+                                                                      where a["module_root"].ToInteger() == (int)sub_s4menu["module_id"].ToInteger()
+                                                                      select a).ToList();
+
+                                                        if (s5menu.Count == 0)
+                                                        {
+                                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                            list += "<a title=\"" + sub_s4menu["module_name"].ToString() + "\" data-id=\"" + sub_s4menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s4menu["module_url"] + "\">";
+                                                            if (sub_s4menu["module_icon"] != null || sub_s4menu["module_icon"].ToString() != "")
+                                                            {
+                                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s4menu["module_icon"].ToString() + "\"></i>";
+                                                            }
+                                                            list += "<span class=\"text-truncate\">" + sub_s4menu["module_name"].ToString() + "</span>";
+                                                            list += "</a>";
+                                                            list += "</div>";
+                                                        }
+                                                        else
+                                                        {
+                                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                            list += "<a title=\"" + sub_s4menu["module_name"].ToString() + "\" data-id=\"" + sub_s4menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_s4menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                                            if (sub_s4menu["module_icon"] != null || sub_s4menu["module_icon"].ToString() != "")
+                                                            {
+                                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s4menu["module_icon"].ToString() + "\"></i>";
+                                                                if (sub_s4menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                                            }
+                                                            list += "<span class=\"text-truncate\">" + sub_s4menu["module_name"].ToString() + "</span>";
+                                                            list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                                            list += "</a>";
+                                                            list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_s4menu["module_id"] + "\">";
+                                                            list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                                            foreach (var sub_s5menu in s5menu)
+                                                            {
+                                                                var s6menu = (from a in menu_sub.AsEnumerable()
+                                                                              where a["module_root"].ToInteger() == (int)sub_s5menu["module_id"].ToInteger()
+                                                                              select a).ToList();
+
+                                                                if (s6menu.Count == 0)
+                                                                {
+                                                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                                    list += "<a title=\"" + sub_s5menu["module_name"].ToString() + "\" data-id=\"" + sub_s5menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s5menu["module_url"] + "\">";
+                                                                    if (sub_s5menu["module_icon"] != null || sub_s5menu["module_icon"].ToString() != "")
+                                                                    {
+                                                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s5menu["module_icon"].ToString() + "\"></i>";
+                                                                    }
+                                                                    list += "<span class=\"text-truncate\">" + sub_s5menu["module_name"].ToString() + "</span>";
+                                                                    list += "</a>";
+                                                                    list += "</div>";
+                                                                }
+                                                                else
+                                                                {
+                                                                    list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                                    list += "<a title=\"" + sub_s5menu["module_name"].ToString() + "\" data-id=\"" + sub_s5menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_s5menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                                                    if (sub_s5menu["module_icon"] != null || sub_s5menu["module_icon"].ToString() != "")
+                                                                    {
+                                                                        list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s5menu["module_icon"].ToString() + "\"></i>";
+                                                                        if (sub_s5menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                                                    }
+                                                                    list += "<span class=\"text-truncate\">" + sub_s5menu["module_name"].ToString() + "</span>";
+                                                                    list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                                                    list += "</a>";
+                                                                    list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_s4menu["module_id"] + "\">";
+                                                                    list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                                                    foreach (var sub_s6menu in s6menu)
+                                                                    {
+                                                                        var s7menu = (from a in menu_sub.AsEnumerable()
+                                                                                      where a["module_root"].ToInteger() == (int)sub_s6menu["module_id"].ToInteger()
+                                                                                      select a).ToList();
+
+                                                                        if (s7menu.Count == 0)
+                                                                        {
+                                                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                                            list += "<a title=\"" + sub_s6menu["module_name"].ToString() + "\" data-id=\"" + sub_s6menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s6menu["module_url"] + "\">";
+                                                                            if (sub_s6menu["module_icon"] != null || sub_s6menu["module_icon"].ToString() != "")
+                                                                            {
+                                                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s6menu["module_icon"].ToString() + "\"></i>";
+                                                                            }
+                                                                            list += "<span class=\"text-truncate\">" + sub_s6menu["module_name"].ToString() + "</span>";
+                                                                            list += "</a>";
+                                                                            list += "</div>";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                                            list += "<a title=\"" + sub_s6menu["module_name"].ToString() + "\" data-id=\"" + sub_s6menu["module_id"] + "\" class=\"mdc-drawer-link\" data-toggle=\"expansionPanel\" data-target=\"menu" + sub_s6menu["module_id"] + "\" href=\"#\" runat=\"server\">";
+                                                                            if (sub_s6menu["module_icon"] != null || sub_s6menu["module_icon"].ToString() != "")
+                                                                            {
+                                                                                list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s6menu["module_icon"].ToString() + "\"></i>";
+                                                                                if (sub_s6menu["module_icon"].ToString().Trim() != "") list += "&nbsp;";
+                                                                            }
+                                                                            list += "<span class=\"text-truncate\">" + sub_s6menu["module_name"].ToString() + "</span>";
+                                                                            list += "<i class=\"mdc-drawer-arrow material-icons\">chevron_right</i>";
+                                                                            list += "</a>";
+                                                                            list += "<div class=\"mdc-expansion-panel\" id=\"menu" + sub_s6menu["module_id"] + "\">";
+                                                                            list += "<nav class=\"mdc-list mdc-drawer-submenu\">";
+                                                                            foreach (var sub_s7menu in s7menu)
+                                                                            {
+                                                                                list += "<div class=\"mdc-list-item mdc-drawer-item border-left-custom-muted\">";
+                                                                                list += "<a title=\"" + sub_s7menu["module_name"].ToString() + "\" data-id=\"" + sub_s7menu["module_id"] + "\" class=\"mdc-drawer-link\" href=\"" + host + sub_s7menu["module_url"] + "\">";
+                                                                                if (sub_s7menu["module_icon"] != null || sub_s7menu["module_icon"].ToString() != "")
+                                                                                {
+                                                                                    list += "<i class=\"mdc-list-item__start-detail mdc-drawer-item-icon " + sub_s7menu["module_icon"].ToString() + "\"></i>";
+                                                                                }
+                                                                                list += "<span class=\"text-truncate\">" + sub_s7menu["module_name"].ToString() + "</span>";
+                                                                                list += "</a>";
+                                                                                list += "</div>";
+                                                                            }
+                                                                            list += "</nav>";
+                                                                            list += "</div>";
+                                                                            list += "</div>";
+                                                                        }
+                                                                    }
+                                                                    list += "</nav>";
+                                                                    list += "</div>";
+                                                                    list += "</div>";
+                                                                }
+
+                                                            }
+                                                            list += "</nav>";
+                                                            list += "</div>";
+                                                            list += "</div>";
+                                                        }
+                                                    }
+                                                    list += "</nav>";
+                                                    list += "</div>";
+                                                    list += "</div>";
+                                                }
+
+                                            }
+                                            list += "</nav>";
+                                            list += "</div>";
+                                            list += "</div>";
+                                        }
+                                    }
+                                    list += "</nav>";
+                                    list += "</div>";
+                                    list += "</div>";
+                                }
+                            }
+                            list += "</nav>";
+                            list += "</div>";
+                            list += "</div>";
+                            Response.Write(list);
+                        }
+                    %>
+                    <div class="mdc-list-item mdc-drawer-item d-md-none d-lg-none">
+                        <a class="mdc-drawer-link" href="~/account/logout" runat="server">
+                            <i class="mdc-list-item__start-detail mdc-drawer-item-icon mdi mdi-logout-variant" aria-hidden="true"></i>
+                            Logout
+                        </a>
+                    </div>                    
+                </nav>
+            </div>
+        </div>
+    </aside>
+    <div class="main-wrapper mdc-drawer-app-content">
+        <header class="mdc-top-app-bar pb-0">
+            <div class="mdc-top-app-bar__row">
+                <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler" data-toggle="aside">menu</button>
+                    <form id="searchTCode" class="mb-0" autocomplete="off">
+                        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
+                            <i class="material-icons mdc-text-field__icon">search</i>
+                            <input class="mdc-text-field__input" id="text-field-hero-input" autofocus="autofocus" />
+                            <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                    <label for="text-field-hero-input" class="mdc-floating-label">Menu search..</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+
+                            <button class="mdc-button mdc-menu-button search-button" style="visibility: hidden" type="button">
+                                <span class="d-flex align-items-center">S</span>
+                            </button>
+                            <div class="mdc-menu mdc-menu-surface mt-2 w-100" tabindex="-1">
+                                <ul class="mdc-list search-result" role="menu" aria-hidden="true" aria-orientation="vertical">
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
+                    <div class="menu-button-container menu-profile d-none d-md-block">
+                        <button class="mdc-button mdc-menu-button">
+                            <span class="d-flex align-items-center">
+                                <span class="figure">
+                                    <img src="<%: M_User.getPhoto() %>" alt="<%: M_User.getFullname() %>" class="user" data-initial="<%: M_User.getInitial() %>" />
+                                </span>
+                                <span class="user-name text-primary"><%: M_User.getFullname() %></span>
+                            </span>
+                        </button>
+                        <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
+                                <li class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon-only">
+                                        <i class="mdi mdi-account-edit-outline text-primary"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a class="mdc-typography mdc-theme--dark" href="~/account/profile.aspx" runat="server">Profile</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                                <li class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon-only">
+                                        <i class="mdi mdi-key-variant text-primary"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a class="mdc-typography mdc-theme--dark" href="~/account/changepassword.aspx" runat="server">Change Password</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                                <li class="mdc-list-item d-none" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon-only">
+                                        <i class="mdi mdi-settings-outline text-primary"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a class="mdc-typography mdc-theme--dark" href="~/account/setting.aspx" runat="server">Setting</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                                <li class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon-only">
+                                        <i class="mdi mdi-lock-outline text-primary"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a class="mdc-typography mdc-theme--dark" href="~/account/lock" runat="server">Lock screen</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                                <li class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon-only">
+                                        <i class="mdi mdi-logout-variant text-primary"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a class="mdc-typography mdc-theme--dark" href="~/account/logout" runat="server">Signout</a>
+                                        </h6>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu-button-container d-none">
+                        <button id="__side_total" class="mdc-button mdc-menu-button">
+                            <i class="mdi mdi-bell"></i>
+                        </button>
+                        <div class="mdc-menu mdc-menu-surface" tabindex="-1">
+                            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" style="min-width: 300px">
+                                <li id="__side_notification" class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon">
+                                        <i class="mdi mdi-bell"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a href="~/account/notification" runat="server">User Notification</a>
+                                        </h6>
+                                        <small class="text-muted">Get all your notification</small>
+                                    </div>
+                                </li>
+                                <li id="__side_message" class="mdc-list-item" role="menuitem">
+                                    <div class="item-thumbnail item-thumbnail-icon">
+                                        <i class="mdi mdi-email-outline"></i>
+                                    </div>
+                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="item-subject font-weight-normal">
+                                            <a href="~/account/message" runat="server">User Message</a>
+                                        </h6>
+                                        <small class="text-muted">Get all your message</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="divider d-none d-md-block"></div>
+
+                    <div class="menu-button-container">
+                        <button class="mdc-button mdc-menu-button" onclick="openUrl('/account/lock');event.preventDefault();">
+                            <i class="fa fa-lock text-green"></i>
+                        </button>
+                        <a runat="server" href="~/account/lock"></a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mdc-top-app-bar__row mb-0 pb-0">
+                <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start" style="z-index: 0;">
+                    <h4 class="font-weight-bold mb-0 pb-0 text-primary"><%: Page.Title %></h4>
+                </div>
+                <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right mb-0 pb-0" style="z-index: 0;">
+                    <%= Navigation_Breadcrumb %>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="page-wrapper mdc-toolbar-fixed-adjust">
+            <form runat="server" autocomplete="off" class="needs-validation mb-0" novalidate="novalidate" enctype="multipart/form-data">
+                <main class="content-wrapper">
+                    <%: Scripts.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() +"/js/vendorbundle") %>
+                    <%: Scripts.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() +"/js/dxfunction") %>
+
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                    <dx:ASPxPopupControl ID="DialogHystory" runat="server" ClientInstanceName="DialogHystory"
+                        Width="1024" Height="300" ClientSideEvents-PopUp="function(s,e){s.ShowAtPos(s.Left, 100); GridHystory.Refresh()}"
+                        Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="BottomSides" AllowResize="true"
+                        CloseAction="CloseButton" CloseOnEscape="true" AllowDragging="true" PopupAnimationType="None"
+                        EnableViewState="false" AutoUpdatePosition="true" ShowFooter="true" FooterImage-AlternateText="FS"
+                        HeaderText="Data Hystory">
+                        <ContentCollection>
+                            <dx:PopupControlContentControl runat="server" SupportsDisabledAttribute="True">
+                                <dx:ASPxGridView runat="server" ID="GridHystory" ClientInstanceName="GridHystory"
+                                    AutoGenerateColumns="false" CssClass="w-100" KeyFieldName="log_id" SettingsPager-PageSize="25"
+                                    OnInit="GridHystory_Init">
+                                    <SettingsSearchPanel CustomEditorID="htSearch" />
+                                    <SettingsDataSecurity AllowInsert="false" AllowEdit="false" AllowDelete="false" />
+                                    <SettingsPager EnableAdaptivity="true" />
+                                    <SettingsBehavior AllowEllipsisInText="true" />
+                                    <SettingsDetail ShowDetailRow="true" />
+                                    <Toolbars>
+                                        <dx:GridViewToolbar>
+                                            <Items>
+                                                <dx:GridViewToolbarItem Command="Refresh" Name="Refresh" BeginGroup="true" Image-IconID="actions_refresh_16x16office2013" />
+                                                <dx:GridViewToolbarItem>
+                                                    <Template>
+                                                        <dx:ASPxButtonEdit ID="htSearch" runat="server" NullText="Search" Height="100%" />
+                                                    </Template>
+                                                </dx:GridViewToolbarItem>
+                                            </Items>
+                                        </dx:GridViewToolbar>
+                                    </Toolbars>
+                                    <Columns>
+                                        <dx:GridViewDataDateColumn FieldName="log_date" Caption="Date" Width="70" MaxWidth="70" Settings-AllowHeaderFilter="True" />
+                                        <dx:GridViewDataComboBoxColumn FieldName="log_type" Caption="Log Type" Width="100" MaxWidth="100" Settings-AllowHeaderFilter="True">
+                                            <PropertiesComboBox DisplayFormatString="{1}" ValueField="log_type" TextField="log_type_desc" />
+                                        </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataComboBoxColumn FieldName="user_id" Caption="Log By" Width="75" MaxWidth="75" Settings-AllowHeaderFilter="True">
+                                            <PropertiesComboBox DisplayFormatString="{1}" ValueField="user_id" TextField="fullname" />
+                                        </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataTextColumn FieldName="local_ip" Caption="Local IP" Width="70" MaxWidth="75" Settings-AllowHeaderFilter="True" />
+                                        <dx:GridViewDataTextColumn FieldName="remote_ip" Caption="Remote IP" Width="70" MaxWidth="75" Settings-AllowHeaderFilter="True" />
+                                        <dx:GridViewDataTextColumn FieldName="location" Caption="Location" Width="50" MaxWidth="50" Settings-AllowHeaderFilter="True" />
+                                    </Columns>
+                                    <Templates>
+                                        <DetailRow>
+                                            <dx:ASPxGridView ID="grid_detail" runat="server" AutoGenerateColumns="false" Width="100%"
+                                                OnBeforePerformDataSelect="grid_detail_BeforePerformDataSelect">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="Title" Caption="Title" Width="100" MaxWidth="100" />
+                                                    <dx:GridViewDataTextColumn FieldName="Data" Settings-AllowEllipsisInText="True" Caption="Data" />
+                                                </Columns>
+                                            </dx:ASPxGridView>
+                                        </DetailRow>
+                                    </Templates>
+                                </dx:ASPxGridView>
+                            </dx:PopupControlContentControl>
+                        </ContentCollection>
+                        <FooterTemplate>
+                            <table class="w-100">
+                                <tr>
+                                    <td class="d-flex justify-content-end p-2">
+                                        <dx:ASPxButton ID="CancelButton" runat="server" Text="Close" AutoPostBack="False"
+                                            ClientSideEvents-Click="function(s, e) { DialogHystory.Hide();  }" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </FooterTemplate>
+                    </dx:ASPxPopupControl>
+
+                    <asp:ScriptManager runat="server">
+                        <Scripts>
+                            <%--Framework Scripts--%>
+                            <asp:ScriptReference Name="MsAjaxBundle" />
+                            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebForms.js" />
+                            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebUIValidation.js" />
+                            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Content/js/WebForms/MenuStandards.js" />
+                            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Content/js/WebForms/GridView.js" />
+                            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Content/js/WebForms/DetailsView.js" />
+                            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Content/js/WebForms/TreeView.js" />
+                            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebParts.js" />
+                            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Content/js/WebForms/Focus.js" />
+                            <asp:ScriptReference Name="WebFormsBundle" />
+                        </Scripts>
+                    </asp:ScriptManager>
+                </main>
+                <footer class="bg-white m-0 mt-5 p-3 pl-5">
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                                <div class="d-flex align-items-start">
+                                    <img src="~/Content/images/kemendagri.png" width="30" class="mr-3" runat="server" />
+                                    <div class="media-body">
+                                        <h6 class="mb-1">Copyright © 2020 Kemendagri Republik Indonesia.</h6>
+                                        <p class="mb-0">All rights reserved. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </div>
+    </div>
+    <%: Scripts.Render("~/themes/"+ HttpContext.Current.User.Identity.Get_Theme() +"/js/data") %>
+
+    <script type="text/javascript">
+        $('form#searchTCode').on('submit', function (e) {
+            e.preventDefault();
+            TCode.PerformCallback($(this).find('input').val());
+        });
+
+        $(document).ready(function () {
+            if (typeof (ASPxClientGridView) != 'undefined' && typeof (grid) != 'undefined') {
+                focusedGrid = grid;
+            }
+            if (typeof (ASPxClientGridView) != 'undefined' && typeof (grid) != 'undefined') {
+                AddKeyboardNavigationTo(grid);
+            }
+            if (typeof (ASPxClientGridView) != 'undefined' && typeof (detail_receive) != 'undefined') {
+                AddKeyboardNavigationTo(detail_receive);
+            }
+            addScrollBar();
+        });
+
+    </script>
+
+    <dx:ASPxCallback runat="server" ID="TCode" ClientInstanceName="TCode" OnCallback="TCode_Callback">
+        <ClientSideEvents CallbackComplete="OnCallbackComplete" />
+    </dx:ASPxCallback>
+
+    <asp:ContentPlaceHolder ID="Script" runat="server" ></asp:ContentPlaceHolder>
+    <%: Scripts.Render("~/themes/material/js/signalr") %>
+    <script src="<%: host %>/signalr/hubs"></script>    
+</body>
+</html>

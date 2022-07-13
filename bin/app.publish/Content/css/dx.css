@@ -1,0 +1,176 @@
+﻿.dxgvHeader_Aqua, .dxmLite_Aqua .dxm-horizontal, .dxgvPagerBottomPanel_Aqua, .dxgvPagerTopPanel_Aqua,
+.dxbButton_Aqua, .dxeButtonEditButton_Aqua,
+.dxeSpinLargeIncButton_Aqua, .dxeSpinLargeDecButton_Aqua,
+.dxbButton_BlackGlass, .dxmLite_BlackGlass .dxm-horizontal, .dxgvHeader_BlackGlass, .dxeButtonEditButton_BlackGlass,
+.dxmLite_Glass .dxctToolbar_Glass.dxm-main, .dxgvHeader_Glass {
+    background-image: none !important;
+}
+
+.dxgvControl_Office2010Silver .dxctToolbar_Office2010Silver.dxm-main.dxgvCTTop,
+.dxgvControl_Office2010Blue .dxctToolbar_Office2010Blue.dxm-main.dxgvCTTop,
+.dxgvControl_Office2010Black .dxctToolbar_Office2010Black.dxm-main.dxgvCTTop,
+.dxmLite_Office2010Silver .dxctToolbar_Office2010Silver.dxm-main.dxgvCTTop {
+    position: relative !important;
+}
+
+.dxeBase_Office2010Silver, .dxmLite_Office2010Silver .dxctToolbar_Office2010Silver.dxm-main, .dxgvControl_Office2010Silver, .dxgvDisabled_Office2010Silver {
+    font-family: "Roboto", Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.dxichTextCellSys {
+    padding: 4px 0 1px;
+}
+.dxpLite_Aqua .dxp-num {
+    color: black !important;
+}
+
+.dxmLite_BlackGlass .dxm-main {
+    border: 1px solid #4e4f51 !important;
+}
+
+.dxmLite_BlackGlass .dxm-main .dxm-separator b {
+    background-color: #4e4f51 !important;
+}
+
+.dxgvControl_SoftOrange, .dxgvDisabled_SoftOrange {
+    border: 1px Solid #d3d3d3;
+}
+
+table.dxeBase_Aqua.dxeTAR,
+table.dxeBase_BlackGlass.dxeTAR,
+table.dxeBase_Glass.dxeTAR,
+table.dxeBase_PlasticBlue.dxeTAR,
+table.dxeBase_SoftOrange.dxeTAR {
+    min-height: 25px !important;
+    vertical-align: middle !important;
+}
+
+.dxctToolbar_Office2010Blue .dxm-tmpl > .dxeTextBoxSys, .dxctToolbar_Office2010Blue .dxm-tmpl > .dxeButtonEditSys, .dxctToolbar_Office2010Blue .dxm-tmpl > .dxeRoot_Office2010Blue {
+    margin: 0px !important;
+}
+
+.dxpcModalBackLite_Office2010Silver, .dxdpModalBackLite_Office2010Silver {
+    background-color: black !important;
+}
+.dxctToolbar .dxm-tmpl > .dxeTextBoxSys, .dxctToolbar .dxm-tmpl > .dxeButtonEditSys, .dxctToolbar .dxm-tmpl > .dxeRoot {
+    margin: 0 !important;
+}
+
+.dxctToolbar_Office2010Silver .dxm-tmpl > .dxeTextBoxSys, .dxctToolbar_Office2010Silver .dxm-tmpl > .dxeButtonEditSys, .dxctToolbar_Office2010Silver .dxm-tmpl > .dxeRoot_Office2010Silver {
+    margin: 0 !important;
+}
+.dxpcLite_Office2010Silver, .dxpcLite_Office2010Blue, .dxpcLite_Office2010Black {
+    /*z-index: 30001 !important;*/
+}
+
+.dxeErrorCellSys, .dxeErrorFrameSys {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 5px !important;
+}
+
+.dxgvHeader_Aqua, .dxmLite_Aqua .dxm-horizontal, .dxgvPagerBottomPanel_Aqua, .dxgvPagerTopPanel_Aqua,
+.dxbButton_Aqua, .dxeButtonEditButton_Aqua,
+.dxeSpinLargeIncButton_Aqua, .dxeSpinLargeDecButton_Aqua,
+.dxbButton_BlackGlass, .dxmLite_BlackGlass .dxm-horizontal, .dxgvHeader_BlackGlass, .dxeButtonEditButton_BlackGlass,
+.dxmLite_Glass .dxctToolbar_Glass.dxm-main, .dxgvHeader_Glass {
+    background-image: none !important;
+}
+
+.dxpLite_Aqua .dxp-num {
+    color: black !important;
+}
+
+.dxmLite_BlackGlass .dxm-main {
+    border: 1px solid #4e4f51 !important;
+}
+
+.dxmLite_BlackGlass .dxm-main .dxm-separator b {
+    background-color: #4e4f51 !important;
+}
+
+.dxgvControl_SoftOrange, .dxgvDisabled_SoftOrange {
+    border: 1px Solid #d3d3d3;
+}
+
+.dxctToolbar_Office2010Blue .dxm-tmpl > .dxeTextBoxSys, .dxctToolbar_Office2010Blue .dxm-tmpl > .dxeButtonEditSys, .dxctToolbar_Office2010Blue .dxm-tmpl > .dxeRoot_Office2010Blue {
+    margin: 0px !important;
+}
+
+.dxeErrorCellSys, .dxeErrorFrameSys {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 5px !important;
+}
+
+a[href*="www.devexpress.com"], body > div:first-child[style*="padding"] {
+    display: none !important;
+}
+
+/* Material Theme*/
+.dxgvControl_Material, .dxgvDisabled_Material, .dxmLite_Material {
+    font: 12px 'Roboto', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif !important;
+}
+.dxgvEditFormDisplayRow_Material td.dxgv, .dxgvDetailCell_Material td.dxgv, .dxgvDataRow_Material td.dxgv, .dxgvDetailRow_Material.dxgvADR td.dxgvAIC{
+    padding:10px !important; 
+}
+.dxgvCommandColumn_Material .dxICheckBox_Material, .dxgvCommandColumn_Material .dxeIRadioButton_Material {
+    margin: -3px 10px -1px 5px !important;
+}
+
+.toolbar-right {
+    right: 2px !important;
+}
+
+.dxflRequired_Office2010Silver{
+    color:red !important;
+}
+.dxgvTable_Office2010Silver{
+    overflow:auto !important;
+}
+/*Search date dialog*/
+/*.dxpcLite_Office2010Silver.dxpclW{
+    min-width:300px !important;
+}*/
+.dxeRoot_Office2010Silver.dxgvHFDRP tbody td:first-child{
+    min-width:60px !important;
+}
+
+.dxmLite_Office2010Silver .dxm-main,
+.dxgvHeader_Office2010Silver,
+.dxgvFilterBar_Office2010Silver,
+.dxgvPagerTopPanel_Office2010Silver,
+.dxgvPagerBottomPanel_Office2010Silver,
+.dxmLite_Office2010Blue .dxm-main,
+.dxgvHeader_Office2010Blue,
+.dxgvFilterBar_Office2010Blue,
+.dxgvPagerTopPanel_Office2010Blue,
+.dxgvPagerBottomPanel_Office2010Blue,
+.dxmLite_Office2010Black .dxm-main,
+.dxgvHeader_Office2010Black,
+.dxgvFilterBar_Office2010Black,
+.dxgvPagerTopPanel_Office2010Black,
+.dxgvPagerBottomPanel_Office2010Black,
+
+.dxpcLite_Office2010Silver .dxpc-header, .dxdpLite_Office2010Silver .dxpc-header {
+    background-image: none !important;
+}
+
+.dxmLite .dxm-main, .dxtlHeader, .dxtlFilterBar {
+    background-color: #e7ebef !important;
+}
+.dxmLite .dxm-main.dxmtb{
+    padding:0 !important;
+}
+/* AspxGridLookup*/
+.dxgvHeader_Office2003Blue, .dxgvFilterRow_Office2003Blue,
+.dxpcLite_Office2010Blue .dxpc-header, .dxdpLite_Office2010Blue .dxpc-header,
+.dxpcLite_Office2010Blue .dxpc-footer, .dxdpLite_Office2010Blue .dxpc-footer {
+    background-image: none !important;
+    background-color: #e4effa !important;
+}
+
+.dxtcLite_Office2010Blue {
+    font: 11px Arial, Geneva, sans-serif;
+}

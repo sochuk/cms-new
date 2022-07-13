@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="LOG_APP">
+      <EntityTypeMapping TypeName="Model.LOG_APP">
+        <MappingFragment StoreEntitySet="LOG_APP">
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+          <ScalarProperty Name="LOG_TITLE" ColumnName="LOG_TITLE" />
+          <ScalarProperty Name="LOG_CONTENT" ColumnName="LOG_CONTENT" />
+          <ScalarProperty Name="BROWSER" ColumnName="BROWSER" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_IIS">
+      <EntityTypeMapping TypeName="Model.LOG_IIS">
+        <MappingFragment StoreEntitySet="LOG_IIS">
+          <ScalarProperty Name="SCWIN32STATUS" ColumnName="SCWIN32STATUS" />
+          <ScalarProperty Name="SCSUBSTATUS" ColumnName="SCSUBSTATUS" />
+          <ScalarProperty Name="SCSTATUS" ColumnName="SCSTATUS" />
+          <ScalarProperty Name="CSHOST" ColumnName="CSHOST" />
+          <ScalarProperty Name="CSREFERER" ColumnName="CSREFERER" />
+          <ScalarProperty Name="CSCOOKIE" ColumnName="CSCOOKIE" />
+          <ScalarProperty Name="CSUSERAGENT" ColumnName="CSUSERAGENT" />
+          <ScalarProperty Name="CSVERSION" ColumnName="CSVERSION" />
+          <ScalarProperty Name="CIP" ColumnName="CIP" />
+          <ScalarProperty Name="CSUSERNAME" ColumnName="CSUSERNAME" />
+          <ScalarProperty Name="SPORT" ColumnName="SPORT" />
+          <ScalarProperty Name="CSURISTEM" ColumnName="CSURISTEM" />
+          <ScalarProperty Name="CSURIQUERY" ColumnName="CSURIQUERY" />
+          <ScalarProperty Name="SIP" ColumnName="SIP" />
+          <ScalarProperty Name="SCOMPUTERNAME" ColumnName="SCOMPUTERNAME" />
+          <ScalarProperty Name="SSITENAME" ColumnName="SSITENAME" />
+          <ScalarProperty Name="DATETIMEEVENT" ColumnName="DATETIMEEVENT" />
+          <ScalarProperty Name="CSBYTES" ColumnName="CSBYTES" />
+          <ScalarProperty Name="TIMETAKEN" ColumnName="TIMETAKEN" />
+          <ScalarProperty Name="TOTALTAKEN" ColumnName="TOTALTAKEN" />
+          <ScalarProperty Name="CSMETHOD" ColumnName="CSMETHOD" />
+          <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+          <ScalarProperty Name="LOG_IPSERVER" ColumnName="LOG_IPSERVER" />
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+          <ScalarProperty Name="LOG_YEAR" ColumnName="LOG_YEAR" />
+          <ScalarProperty Name="LOG_MONTH" ColumnName="LOG_MONTH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_PERSO">
+      <EntityTypeMapping TypeName="Model.LOG_PERSO">
+        <MappingFragment StoreEntitySet="LOG_PERSO">
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+          <ScalarProperty Name="CARDUID" ColumnName="CARDUID" />
+          <ScalarProperty Name="CONTROLNUMBER" ColumnName="CONTROLNUMBER" />
+          <ScalarProperty Name="MANUFACTURERCODE" ColumnName="MANUFACTURERCODE" />
+          <ScalarProperty Name="PERSOSITE" ColumnName="PERSOSITE" />
+          <ScalarProperty Name="PERSO_DATE" ColumnName="PERSO_DATE" />
+          <ScalarProperty Name="ERROR_CODE" ColumnName="ERROR_CODE" />
+          <ScalarProperty Name="VENDOR_ID" ColumnName="VENDOR_ID" />
+          <ScalarProperty Name="CONTRACT_ID" ColumnName="CONTRACT_ID" />
+          <ScalarProperty Name="IS_COMMIT" ColumnName="IS_COMMIT" />
+          <ScalarProperty Name="IP_REQUEST" ColumnName="IP_REQUEST" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_PERSO_COUNT">
+      <EntityTypeMapping TypeName="Model.LOG_PERSO_COUNT">
+        <MappingFragment StoreEntitySet="LOG_PERSO_COUNT">
+          <ScalarProperty Name="VENDOR_ID" ColumnName="VENDOR_ID" />
+          <ScalarProperty Name="CONTRACT_ID" ColumnName="CONTRACT_ID" />
+          <ScalarProperty Name="CURRENT_HIT" ColumnName="CURRENT_HIT" />
+          <ScalarProperty Name="SUCCESS_HIT" ColumnName="SUCCESS_HIT" />
+          <ScalarProperty Name="FAIL_HIT" ColumnName="FAIL_HIT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_USER">
+      <EntityTypeMapping TypeName="Model.LOG_USER">
+        <MappingFragment StoreEntitySet="LOG_USER">
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+          <ScalarProperty Name="LOG_DATE" ColumnName="LOG_DATE" />
+          <ScalarProperty Name="LOG_TITLE" ColumnName="LOG_TITLE" />
+          <ScalarProperty Name="LOG_TYPE" ColumnName="LOG_TYPE" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+          <ScalarProperty Name="LOCAL_IP" ColumnName="LOCAL_IP" />
+          <ScalarProperty Name="REMOTE_IP" ColumnName="REMOTE_IP" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="BROWSER" ColumnName="BROWSER" />
+          <ScalarProperty Name="LOG_CONTENT" ColumnName="LOG_CONTENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_YEAR">
+      <EntityTypeMapping TypeName="Model.LOG_YEAR">
+        <MappingFragment StoreEntitySet="LOG_YEAR">
+          <ScalarProperty Name="FULLYEAR" ColumnName="FULLYEAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ACCESS">
+      <EntityTypeMapping TypeName="Model.M_ACCESS">
+        <MappingFragment StoreEntitySet="M_ACCESS">
+          <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_COMPANY">
+      <EntityTypeMapping TypeName="Model.M_COMPANY">
+        <MappingFragment StoreEntitySet="M_COMPANY">
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="COMPANY_DESC" ColumnName="COMPANY_DESC" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_CONFIGURATION">
+      <EntityTypeMapping TypeName="Model.M_CONFIGURATION">
+        <MappingFragment StoreEntitySet="M_CONFIGURATION">
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="TELEGRAM_API" ColumnName="TELEGRAM_API" />
+          <ScalarProperty Name="SMTP_MAIL" ColumnName="SMTP_MAIL" />
+          <ScalarProperty Name="SMTP_SERVER" ColumnName="SMTP_SERVER" />
+          <ScalarProperty Name="SMTP_PORT" ColumnName="SMTP_PORT" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="SMTP_PASSWORD" ColumnName="SMTP_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_CONTRACT">
+      <EntityTypeMapping TypeName="Model.M_CONTRACT">
+        <MappingFragment StoreEntitySet="M_CONTRACT">
+          <ScalarProperty Name="CONTRACT_ID" ColumnName="CONTRACT_ID" />
+          <ScalarProperty Name="CONTRACT_NAME" ColumnName="CONTRACT_NAME" />
+          <ScalarProperty Name="CONTRACT_DESC" ColumnName="CONTRACT_DESC" />
+          <ScalarProperty Name="ATTACHMENT" ColumnName="ATTACHMENT" />
+          <ScalarProperty Name="PERIOD_START" ColumnName="PERIOD_START" />
+          <ScalarProperty Name="PERIOD_END" ColumnName="PERIOD_END" />
+          <ScalarProperty Name="QUOTA" ColumnName="QUOTA" />
+          <ScalarProperty Name="VENDOR_ID" ColumnName="VENDOR_ID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_GROUP">
+      <EntityTypeMapping TypeName="Model.M_GROUP">
+        <MappingFragment StoreEntitySet="M_GROUP">
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+          <ScalarProperty Name="GROUP_DESC" ColumnName="GROUP_DESC" />
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ICON">
+      <EntityTypeMapping TypeName="Model.M_ICON">
+        <MappingFragment StoreEntitySet="M_ICON">
+          <ScalarProperty Name="ICON_CODE" ColumnName="ICON_CODE" />
+          <ScalarProperty Name="ICON_NAME" ColumnName="ICON_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_MODULE">
+      <EntityTypeMapping TypeName="Model.M_MODULE">
+        <MappingFragment StoreEntitySet="M_MODULE">
+          <ScalarProperty Name="MODULE_ID" ColumnName="MODULE_ID" />
+          <ScalarProperty Name="TYPE_CODE" ColumnName="TYPE_CODE" />
+          <ScalarProperty Name="MODULE_NAME" ColumnName="MODULE_NAME" />
+          <ScalarProperty Name="MODULE_DESC" ColumnName="MODULE_DESC" />
+          <ScalarProperty Name="MODULE_TITLE" ColumnName="MODULE_TITLE" />
+          <ScalarProperty Name="MODULE_ROOT" ColumnName="MODULE_ROOT" />
+          <ScalarProperty Name="MODULE_ICON" ColumnName="MODULE_ICON" />
+          <ScalarProperty Name="MODULE_URL" ColumnName="MODULE_URL" />
+          <ScalarProperty Name="MODULE_TYPE" ColumnName="MODULE_TYPE" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISVISIBLE" ColumnName="ISVISIBLE" />
+          <ScalarProperty Name="ORDER_NO" ColumnName="ORDER_NO" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_ROLE">
+      <EntityTypeMapping TypeName="Model.M_ROLE">
+        <MappingFragment StoreEntitySet="M_ROLE">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ROLE_DESC" ColumnName="ROLE_DESC" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ALLOW_CREATE" ColumnName="ALLOW_CREATE" />
+          <ScalarProperty Name="ALLOW_UPDATE" ColumnName="ALLOW_UPDATE" />
+          <ScalarProperty Name="ALLOW_DELETE" ColumnName="ALLOW_DELETE" />
+          <ScalarProperty Name="ALLOW_EXPORT" ColumnName="ALLOW_EXPORT" />
+          <ScalarProperty Name="ALLOW_IMPORT" ColumnName="ALLOW_IMPORT" />
+          <ScalarProperty Name="ALLOW_ENABLEDISABLE" ColumnName="ALLOW_ENABLEDISABLE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SERVER">
+      <EntityTypeMapping TypeName="Model.M_SERVER">
+        <MappingFragment StoreEntitySet="M_SERVER">
+          <ScalarProperty Name="SERVER_ID" ColumnName="SERVER_ID" />
+          <ScalarProperty Name="SERVER_NAME" ColumnName="SERVER_NAME" />
+          <ScalarProperty Name="SERVER_DESC" ColumnName="SERVER_DESC" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="LOG_PATH" ColumnName="LOG_PATH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_SETTING">
+      <EntityTypeMapping TypeName="Model.M_SETTING">
+        <MappingFragment StoreEntitySet="M_SETTING">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="GRID_PAGESIZE" ColumnName="GRID_PAGESIZE" />
+          <ScalarProperty Name="GRID_THEME" ColumnName="GRID_THEME" />
+          <ScalarProperty Name="GRID_ZEBRACOLOR" ColumnName="GRID_ZEBRACOLOR" />
+          <ScalarProperty Name="GRID_WRAP_COLUMN" ColumnName="GRID_WRAP_COLUMN" />
+          <ScalarProperty Name="GRID_WRAP_CELL" ColumnName="GRID_WRAP_CELL" />
+          <ScalarProperty Name="GRID_SHOWFILTERROW" ColumnName="GRID_SHOWFILTERROW" />
+          <ScalarProperty Name="GRID_SHOWFILTERBAR" ColumnName="GRID_SHOWFILTERBAR" />
+          <ScalarProperty Name="GRID_SELECTBYROW" ColumnName="GRID_SELECTBYROW" />
+          <ScalarProperty Name="GRID_FOCUSEROW" ColumnName="GRID_FOCUSEROW" />
+          <ScalarProperty Name="GRID_ELLIPSIS" ColumnName="GRID_ELLIPSIS" />
+          <ScalarProperty Name="GRID_SHOWFOOTER" ColumnName="GRID_SHOWFOOTER" />
+          <ScalarProperty Name="GRID_RESPONSIVE" ColumnName="GRID_RESPONSIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_THEME">
+      <EntityTypeMapping TypeName="Model.M_THEME">
+        <MappingFragment StoreEntitySet="M_THEME">
+          <ScalarProperty Name="THEME_ID" ColumnName="THEME_ID" />
+          <ScalarProperty Name="THEME_NAME" ColumnName="THEME_NAME" />
+          <ScalarProperty Name="THEME_DESC" ColumnName="THEME_DESC" />
+          <ScalarProperty Name="THEME_LOCATION" ColumnName="THEME_LOCATION" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_TOKEN">
+      <EntityTypeMapping TypeName="Model.M_TOKEN">
+        <MappingFragment StoreEntitySet="M_TOKEN">
+          <ScalarProperty Name="TOKEN_ID" ColumnName="TOKEN_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="TOKEN" ColumnName="TOKEN" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_USER">
+      <EntityTypeMapping TypeName="Model.M_USER">
+        <MappingFragment StoreEntitySet="M_USER">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TELEGRAM_ID" ColumnName="TELEGRAM_ID" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISREQUIRED_TOKEN" ColumnName="ISREQUIRED_TOKEN" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="THEME_ID" ColumnName="THEME_ID" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="VENDOR_ID" ColumnName="VENDOR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="M_VENDOR">
+      <EntityTypeMapping TypeName="Model.M_VENDOR">
+        <MappingFragment StoreEntitySet="M_VENDOR">
+          <ScalarProperty Name="VENDOR_ID" ColumnName="VENDOR_ID" />
+          <ScalarProperty Name="VENDOR_NAME" ColumnName="VENDOR_NAME" />
+          <ScalarProperty Name="VENDOR_DESC" ColumnName="VENDOR_DESC" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="UPDATEDATE" ColumnName="UPDATEDATE" />
+          <ScalarProperty Name="DELETEDATE" ColumnName="DELETEDATE" />
+          <ScalarProperty Name="CREATEBY" ColumnName="CREATEBY" />
+          <ScalarProperty Name="UPDATEBY" ColumnName="UPDATEBY" />
+          <ScalarProperty Name="DELETEBY" ColumnName="DELETEBY" />
+          <ScalarProperty Name="VENDOR_COLOR" ColumnName="VENDOR_COLOR" />
+          <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+          <ScalarProperty Name="PERSOSITE" ColumnName="PERSOSITE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESSAGEs">
+      <EntityTypeMapping TypeName="Model.MESSAGE">
+        <MappingFragment StoreEntitySet="MESSAGE">
+          <ScalarProperty Name="USER_FROM" ColumnName="USER_FROM" />
+          <ScalarProperty Name="USER_TO" ColumnName="USER_TO" />
+          <ScalarProperty Name="ISREAD" ColumnName="ISREAD" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="MESSAGE_CONTENT" ColumnName="MESSAGE_CONTENT" />
+          <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTIFICATIONs">
+      <EntityTypeMapping TypeName="Model.NOTIFICATION">
+        <MappingFragment StoreEntitySet="NOTIFICATION">
+          <ScalarProperty Name="NOTIF_ID" ColumnName="NOTIF_ID" />
+          <ScalarProperty Name="NOTIF_TITLE" ColumnName="NOTIF_TITLE" />
+          <ScalarProperty Name="NOTIF_MESSAGE" ColumnName="NOTIF_MESSAGE" />
+          <ScalarProperty Name="NOTIF_TYPE" ColumnName="NOTIF_TYPE" />
+          <ScalarProperty Name="TO_USER_ID" ColumnName="TO_USER_ID" />
+          <ScalarProperty Name="ISREAD" ColumnName="ISREAD" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

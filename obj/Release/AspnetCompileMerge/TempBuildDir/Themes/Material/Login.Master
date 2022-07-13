@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.Master.cs" Inherits="CMS.Themes.Material.Login" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%: Page.Title %></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/favicon.png" rel="icon" type="image/png" />
+    <link href='//www.w3.org' rel='dns-prefetch'/>    
+    <link href='//cloudflare.com' rel='dns-prefetch'/>
+    <link href='//cdnjs.cloudflare.com' rel='dns-prefetch'/>
+    <link href='//dnjs.cloudflare.com' rel='dns-prefetch'/>
+    <link href='//ajax.googleapis.com' rel='dns-prefetch'/>
+    <link href='//fonts.googleapis.com' rel='dns-prefetch'/>
+    <link href='//fonts.gstatic.com' rel='dns-prefetch'/>
+    <link href='//geobytes.com' rel='dns-prefetch'/>
+    <link href='//gd.geobytes.com' rel='dns-prefetch'/>
+    <asp:PlaceHolder runat="server">
+        <%: Styles.Render("~/themes/material/css/iconpack") %>
+        <%: Styles.Render("~/themes/material/css/login") %>  
+        <%: Scripts.Render("~/bundles/modernizr") %>
+        <%: Scripts.Render("~/themes/material/js/jquery") %> 
+        <%= background_image %>
+    </asp:PlaceHolder>
+    <style type="text/css">
+        @-webkit-keyframes autofill {
+            0%, 100% {
+                color: #fff;
+                background: transparent;
+            }
+        }
+
+        input:-webkit-autofill {
+            -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+            -webkit-animation-name: autofill;
+            -webkit-animation-fill-mode: both;
+        }
+
+        input:-webkit-autofill:focus, input:-webkit-autofill:active, input:-webkit-autofill:hover {
+             -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+             -webkit-animation-name: autofill;
+             -webkit-animation-fill-mode: both;
+        }        
+    </style>
+    
+</head>
+<body>
+    <%: Scripts.Render("~/themes/material/js/preloader") %>
+    <%: Scripts.Render("~/themes/material/js/vendorbundle") %>
+    <%: Scripts.Render("~/themes/material/js/dxfunction") %>
+    <div class="body-wrapper">
+        <div class="main-wrapper auth-page lock-full-bg">
+            <div class="page-wrapper full-page-wrapper d-flex align-items-center justify-content-center">
+                <main class="auth-page">
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+                            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+                                <div class="mdc-card bg-white shadow-none p-lg-5 pt-lg-0 rounded" style="background-color: rgba(255, 255, 255, 0.7) !important">
+                                    <form method="post" runat="server" autocomplete="off" aria-autocomplete="none" class="m-0">
+                                        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+                                        <asp:ScriptManager runat="server">
+                                            <Scripts>
+                                                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                                                <%--Framework Scripts--%>
+                                                <asp:ScriptReference Name="MsAjaxBundle" />
+                                                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebForms.js" />
+                                                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebUIValidation.js" />
+                                                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Content/js/WebForms/MenuStandards.js" />
+                                                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Content/js/WebForms/GridView.js" />
+                                                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Content/js/WebForms/DetailsView.js" />
+                                                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Content/js/WebForms/TreeView.js" />
+                                                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Content/js/WebForms/WebParts.js" />
+                                                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Content/js/WebForms/Focus.js" />
+                                                <asp:ScriptReference Name="WebFormsBundle" />
+                                                <%--Site Scripts--%>
+                                            </Scripts>
+                                        </asp:ScriptManager>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <asp:PlaceHolder runat="server">         
+        <%: Scripts.Render("~/themes/material/js/login") %>
+    </asp:PlaceHolder>
+</body>
+</html>

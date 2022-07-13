@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LOG_APP">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_CONTENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="BROWSER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="LOG_IIS">
+    <Key>
+      <PropertyRef Name="CIP" />
+      <PropertyRef Name="SIP" />
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="SCWIN32STATUS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SCSUBSTATUS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SCSTATUS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CSHOST" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CSREFERER" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CSCOOKIE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CSUSERAGENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CSVERSION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CSUSERNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SPORT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CSURISTEM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CSURIQUERY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SCOMPUTERNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SSITENAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DATETIMEEVENT" Type="DateTime" />
+    <Property Name="CSBYTES" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TIMETAKEN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TOTALTAKEN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CSMETHOD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_DATE" Type="DateTime" />
+    <Property Name="LOG_IPSERVER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_YEAR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LOG_MONTH" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LOG_PERSO">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CARDUID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CONTROLNUMBER" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MANUFACTURERCODE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PERSOSITE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PERSO_DATE" Type="DateTime" />
+    <Property Name="ERROR_CODE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="VENDOR_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CONTRACT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IS_COMMIT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IP_REQUEST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="IP_ADDRESS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="M_CONTRACT" Relationship="Self.LOG_PERSO_CONTRACT" FromRole="LOG_PERSO" ToRole="M_CONTRACT" />
+    <NavigationProperty Name="M_VENDOR" Relationship="Self.LOG_PERSO_VENDOR" FromRole="LOG_PERSO" ToRole="M_VENDOR" />
+  </EntityType>
+  <EntityType Name="LOG_PERSO_COUNT">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+      <PropertyRef Name="CONTRACT_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTRACT_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CURRENT_HIT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SUCCESS_HIT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FAIL_HIT" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="M_CONTRACT" Relationship="Self.LOG_PERSO_SUM_CONTRACT" FromRole="LOG_PERSO_COUNT" ToRole="M_CONTRACT" />
+    <NavigationProperty Name="M_VENDOR" Relationship="Self.LOG_PERSO_SUM_VENDOR" FromRole="LOG_PERSO_COUNT" ToRole="M_VENDOR" />
+  </EntityType>
+  <EntityType Name="LOG_USER">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="LOG_DATE" Type="DateTime" />
+    <Property Name="LOG_TITLE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_TYPE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MODULE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LOCAL_IP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="REMOTE_IP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LOCATION" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="BROWSER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LOG_CONTENT" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="M_MODULE" Relationship="Self.LOG_USER_MODULE" FromRole="LOG_USER" ToRole="M_MODULE" />
+    <NavigationProperty Name="M_USER" Relationship="Self.LOG_USER_USER" FromRole="LOG_USER" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="LOG_YEAR">
+    <Key>
+      <PropertyRef Name="FULLYEAR" />
+    </Key>
+    <Property Name="FULLYEAR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="M_ACCESS">
+    <Key>
+      <PropertyRef Name="MODULE_ID" />
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="MODULE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GROUP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <NavigationProperty Name="M_GROUP" Relationship="Self.M_ACCESS_GROUP" FromRole="M_ACCESS" ToRole="M_GROUP" />
+    <NavigationProperty Name="M_MODULE" Relationship="Self.M_ACCESS_MODULE" FromRole="M_ACCESS" ToRole="M_MODULE" />
+  </EntityType>
+  <EntityType Name="M_COMPANY">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_DESC" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="M_CONFIGURATION" Relationship="Self.M_CONFIGURATION_COMPANY" FromRole="M_COMPANY" ToRole="M_CONFIGURATION" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_USER_COMPANY" FromRole="M_COMPANY" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="M_CONFIGURATION">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TELEGRAM_API" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_MAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_SERVER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_PORT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="SMTP_PASSWORD" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="M_COMPANY" Relationship="Self.M_CONFIGURATION_COMPANY" FromRole="M_CONFIGURATION" ToRole="M_COMPANY" />
+  </EntityType>
+  <EntityType Name="M_CONTRACT">
+    <Key>
+      <PropertyRef Name="CONTRACT_ID" />
+    </Key>
+    <Property Name="CONTRACT_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CONTRACT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CONTRACT_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHMENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="PERIOD_START" Type="DateTime" />
+    <Property Name="PERIOD_END" Type="DateTime" />
+    <Property Name="QUOTA" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="VENDOR_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <NavigationProperty Name="LOG_PERSO" Relationship="Self.LOG_PERSO_CONTRACT" FromRole="M_CONTRACT" ToRole="LOG_PERSO" />
+    <NavigationProperty Name="LOG_PERSO_COUNT" Relationship="Self.LOG_PERSO_SUM_CONTRACT" FromRole="M_CONTRACT" ToRole="LOG_PERSO_COUNT" />
+    <NavigationProperty Name="M_VENDOR" Relationship="Self.M_CONTRACT_VENDOR" FromRole="M_CONTRACT" ToRole="M_VENDOR" />
+  </EntityType>
+  <EntityType Name="M_GROUP">
+    <Key>
+      <PropertyRef Name="GROUP_ID" />
+    </Key>
+    <Property Name="GROUP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GROUP_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="GROUP_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ROLE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <NavigationProperty Name="M_ACCESS" Relationship="Self.M_ACCESS_GROUP" FromRole="M_GROUP" ToRole="M_ACCESS" />
+    <NavigationProperty Name="M_ROLE" Relationship="Self.M_GROUP_ROLE" FromRole="M_GROUP" ToRole="M_ROLE" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_USER_GROUP" FromRole="M_GROUP" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="M_ICON">
+    <Key>
+      <PropertyRef Name="ICON_CODE" />
+    </Key>
+    <Property Name="ICON_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ICON_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="M_MODULE" Relationship="Self.M_MODULE_ICON" FromRole="M_ICON" ToRole="M_MODULE" />
+  </EntityType>
+  <EntityType Name="M_MODULE">
+    <Key>
+      <PropertyRef Name="MODULE_ID" />
+    </Key>
+    <Property Name="MODULE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TYPE_CODE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_DESC" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_ROOT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MODULE_ICON" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_URL" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE_TYPE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISVISIBLE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ORDER_NO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="LOG_USER" Relationship="Self.LOG_USER_MODULE" FromRole="M_MODULE" ToRole="LOG_USER" />
+    <NavigationProperty Name="M_ACCESS" Relationship="Self.M_ACCESS_MODULE" FromRole="M_MODULE" ToRole="M_ACCESS" />
+    <NavigationProperty Name="M_ICON" Relationship="Self.M_MODULE_ICON" FromRole="M_MODULE" ToRole="M_ICON" />
+    <NavigationProperty Name="M_MODULE1" Relationship="Self.M_MODULE_ROOT" FromRole="M_MODULE" ToRole="M_MODULE1" />
+    <NavigationProperty Name="M_MODULE2" Relationship="Self.M_MODULE_ROOT" FromRole="M_MODULE1" ToRole="M_MODULE" />
+  </EntityType>
+  <EntityType Name="M_ROLE">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ROLE_DESC" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_CREATE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_UPDATE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_DELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_EXPORT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_IMPORT" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALLOW_ENABLEDISABLE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="M_GROUP" Relationship="Self.M_GROUP_ROLE" FromRole="M_ROLE" ToRole="M_GROUP" />
+  </EntityType>
+  <EntityType Name="M_SERVER">
+    <Key>
+      <PropertyRef Name="SERVER_ID" />
+    </Key>
+    <Property Name="SERVER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SERVER_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SERVER_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IP_ADDRESS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="LOG_PATH" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="M_SETTING">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="GRID_PAGESIZE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_THEME" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_ZEBRACOLOR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_WRAP_COLUMN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_WRAP_CELL" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFILTERROW" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFILTERBAR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_SELECTBYROW" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_FOCUSEROW" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_ELLIPSIS" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_SHOWFOOTER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GRID_RESPONSIVE" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_SETTING_USER" FromRole="M_SETTING" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="M_THEME">
+    <Key>
+      <PropertyRef Name="THEME_ID" />
+    </Key>
+    <Property Name="THEME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="THEME_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="THEME_DESC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="THEME_LOCATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_USER_THEME" FromRole="M_THEME" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="M_TOKEN">
+    <Key>
+      <PropertyRef Name="TOKEN_ID" />
+    </Key>
+    <Property Name="TOKEN_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TOKEN" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_TOKEN_USER" FromRole="M_TOKEN" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="M_USER">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FULLNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TELEGRAM_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GENDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GROUP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISREQUIRED_TOKEN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="THEME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOTES" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="VENDOR_ID" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="LOG_USER" Relationship="Self.LOG_USER_USER" FromRole="M_USER" ToRole="LOG_USER" />
+    <NavigationProperty Name="M_COMPANY" Relationship="Self.M_USER_COMPANY" FromRole="M_USER" ToRole="M_COMPANY" />
+    <NavigationProperty Name="M_GROUP" Relationship="Self.M_USER_GROUP" FromRole="M_USER" ToRole="M_GROUP" />
+    <NavigationProperty Name="M_SETTING" Relationship="Self.M_SETTING_USER" FromRole="M_USER" ToRole="M_SETTING" />
+    <NavigationProperty Name="M_THEME" Relationship="Self.M_USER_THEME" FromRole="M_USER" ToRole="M_THEME" />
+    <NavigationProperty Name="M_TOKEN" Relationship="Self.M_TOKEN_USER" FromRole="M_USER" ToRole="M_TOKEN" />
+    <NavigationProperty Name="M_VENDOR" Relationship="Self.M_USER_VENDOR" FromRole="M_USER" ToRole="M_VENDOR" />
+    <NavigationProperty Name="MESSAGEs" Relationship="Self.MESSAGE_FROM" FromRole="M_USER" ToRole="MESSAGE" />
+    <NavigationProperty Name="MESSAGEs1" Relationship="Self.MESSAGE_TO" FromRole="M_USER" ToRole="MESSAGE" />
+    <NavigationProperty Name="NOTIFICATIONs" Relationship="Self.NOTIFICATION_TO" FromRole="M_USER" ToRole="NOTIFICATION" />
+  </EntityType>
+  <EntityType Name="M_VENDOR">
+    <Key>
+      <PropertyRef Name="VENDOR_ID" />
+    </Key>
+    <Property Name="VENDOR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="VENDOR_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VENDOR_DESC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISDELETE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="UPDATEDATE" Type="DateTime" />
+    <Property Name="DELETEDATE" Type="DateTime" />
+    <Property Name="CREATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="UPDATEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DELETEBY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="VENDOR_COLOR" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IP_ADDRESS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PERSOSITE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LOG_PERSO" Relationship="Self.LOG_PERSO_VENDOR" FromRole="M_VENDOR" ToRole="LOG_PERSO" />
+    <NavigationProperty Name="LOG_PERSO_COUNT" Relationship="Self.LOG_PERSO_SUM_VENDOR" FromRole="M_VENDOR" ToRole="LOG_PERSO_COUNT" />
+    <NavigationProperty Name="M_CONTRACT" Relationship="Self.M_CONTRACT_VENDOR" FromRole="M_VENDOR" ToRole="M_CONTRACT" />
+    <NavigationProperty Name="M_USER" Relationship="Self.M_USER_VENDOR" FromRole="M_VENDOR" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="MESSAGE">
+    <Key>
+      <PropertyRef Name="MESSAGE_ID" />
+    </Key>
+    <Property Name="USER_FROM" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="USER_TO" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISREAD" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="MESSAGE_CONTENT" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="MESSAGE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="M_USER" Relationship="Self.MESSAGE_FROM" FromRole="MESSAGE" ToRole="M_USER" />
+    <NavigationProperty Name="M_USER1" Relationship="Self.MESSAGE_TO" FromRole="MESSAGE" ToRole="M_USER" />
+  </EntityType>
+  <EntityType Name="NOTIFICATION">
+    <Key>
+      <PropertyRef Name="NOTIF_ID" />
+    </Key>
+    <Property Name="NOTIF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOTIF_TITLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NOTIF_MESSAGE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NOTIF_TYPE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TO_USER_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISREAD" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CREATEDATE" Type="DateTime" />
+    <Property Name="URL" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="M_USER" Relationship="Self.NOTIFICATION_TO" FromRole="NOTIFICATION" ToRole="M_USER" />
+  </EntityType>
+  <Association Name="LOG_PERSO_CONTRACT">
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="0..1" />
+    <End Role="LOG_PERSO" Type="Self.LOG_PERSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_CONTRACT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="LOG_PERSO" Type="Self.LOG_PERSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_SUM_CONTRACT">
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="1" />
+    <End Role="LOG_PERSO_COUNT" Type="Self.LOG_PERSO_COUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_CONTRACT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO_COUNT">
+        <PropertyRef Name="CONTRACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_PERSO_SUM_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="1" />
+    <End Role="LOG_PERSO_COUNT" Type="Self.LOG_PERSO_COUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="LOG_PERSO_COUNT">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_USER_MODULE">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="0..1" />
+    <End Role="LOG_USER" Type="Self.LOG_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="LOG_USER">
+        <PropertyRef Name="MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_USER_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="LOG_USER" Type="Self.LOG_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="LOG_USER">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_ACCESS_GROUP">
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="1" />
+    <End Role="M_ACCESS" Type="Self.M_ACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_GROUP">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="M_ACCESS">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_ACCESS_MODULE">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="1" />
+    <End Role="M_ACCESS" Type="Self.M_ACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="M_ACCESS">
+        <PropertyRef Name="MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_CONFIGURATION_COMPANY">
+    <End Role="M_COMPANY" Type="Self.M_COMPANY" Multiplicity="1" />
+    <End Role="M_CONFIGURATION" Type="Self.M_CONFIGURATION" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="M_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="M_CONFIGURATION">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_COMPANY">
+    <End Role="M_COMPANY" Type="Self.M_COMPANY" Multiplicity="1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_CONTRACT_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="M_CONTRACT" Type="Self.M_CONTRACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="M_CONTRACT">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_GROUP_ROLE">
+    <End Role="M_ROLE" Type="Self.M_ROLE" Multiplicity="0..1" />
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_ROLE">
+        <PropertyRef Name="ROLE_ID" />
+      </Principal>
+      <Dependent Role="M_GROUP">
+        <PropertyRef Name="ROLE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_GROUP">
+    <End Role="M_GROUP" Type="Self.M_GROUP" Multiplicity="0..1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_GROUP">
+        <PropertyRef Name="GROUP_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_MODULE_ICON">
+    <End Role="M_ICON" Type="Self.M_ICON" Multiplicity="0..1" />
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_ICON">
+        <PropertyRef Name="ICON_CODE" />
+      </Principal>
+      <Dependent Role="M_MODULE">
+        <PropertyRef Name="MODULE_ICON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_MODULE_ROOT">
+    <End Role="M_MODULE" Type="Self.M_MODULE" Multiplicity="0..1" />
+    <End Role="M_MODULE1" Type="Self.M_MODULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_MODULE">
+        <PropertyRef Name="MODULE_ID" />
+      </Principal>
+      <Dependent Role="M_MODULE1">
+        <PropertyRef Name="MODULE_ROOT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_SETTING_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="1" />
+    <End Role="M_SETTING" Type="Self.M_SETTING" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="M_SETTING">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_THEME">
+    <End Role="M_THEME" Type="Self.M_THEME" Multiplicity="1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_THEME">
+        <PropertyRef Name="THEME_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="THEME_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_TOKEN_USER">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="M_TOKEN" Type="Self.M_TOKEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="M_TOKEN">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="M_USER_VENDOR">
+    <End Role="M_VENDOR" Type="Self.M_VENDOR" Multiplicity="0..1" />
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_VENDOR">
+        <PropertyRef Name="VENDOR_ID" />
+      </Principal>
+      <Dependent Role="M_USER">
+        <PropertyRef Name="VENDOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MESSAGE_FROM">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="MESSAGE">
+        <PropertyRef Name="USER_FROM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MESSAGE_TO">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="MESSAGE">
+        <PropertyRef Name="USER_TO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICATION_TO">
+    <End Role="M_USER" Type="Self.M_USER" Multiplicity="0..1" />
+    <End Role="NOTIFICATION" Type="Self.NOTIFICATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="M_USER">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="NOTIFICATION">
+        <PropertyRef Name="TO_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LOG_APP" EntityType="Self.LOG_APP" />
+    <EntitySet Name="LOG_IIS" EntityType="Self.LOG_IIS" />
+    <EntitySet Name="LOG_PERSO" EntityType="Self.LOG_PERSO" />
+    <EntitySet Name="LOG_PERSO_COUNT" EntityType="Self.LOG_PERSO_COUNT" />
+    <EntitySet Name="LOG_USER" EntityType="Self.LOG_USER" />
+    <EntitySet Name="LOG_YEAR" EntityType="Self.LOG_YEAR" />
+    <EntitySet Name="M_ACCESS" EntityType="Self.M_ACCESS" />
+    <EntitySet Name="M_COMPANY" EntityType="Self.M_COMPANY" />
+    <EntitySet Name="M_CONFIGURATION" EntityType="Self.M_CONFIGURATION" />
+    <EntitySet Name="M_CONTRACT" EntityType="Self.M_CONTRACT" />
+    <EntitySet Name="M_GROUP" EntityType="Self.M_GROUP" />
+    <EntitySet Name="M_ICON" EntityType="Self.M_ICON" />
+    <EntitySet Name="M_MODULE" EntityType="Self.M_MODULE" />
+    <EntitySet Name="M_ROLE" EntityType="Self.M_ROLE" />
+    <EntitySet Name="M_SERVER" EntityType="Self.M_SERVER" />
+    <EntitySet Name="M_SETTING" EntityType="Self.M_SETTING" />
+    <EntitySet Name="M_THEME" EntityType="Self.M_THEME" />
+    <EntitySet Name="M_TOKEN" EntityType="Self.M_TOKEN" />
+    <EntitySet Name="M_USER" EntityType="Self.M_USER" />
+    <EntitySet Name="M_VENDOR" EntityType="Self.M_VENDOR" />
+    <EntitySet Name="MESSAGEs" EntityType="Self.MESSAGE" />
+    <EntitySet Name="NOTIFICATIONs" EntityType="Self.NOTIFICATION" />
+    <AssociationSet Name="LOG_PERSO_CONTRACT" Association="Self.LOG_PERSO_CONTRACT">
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+      <End Role="LOG_PERSO" EntitySet="LOG_PERSO" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_VENDOR" Association="Self.LOG_PERSO_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="LOG_PERSO" EntitySet="LOG_PERSO" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_SUM_CONTRACT" Association="Self.LOG_PERSO_SUM_CONTRACT">
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+      <End Role="LOG_PERSO_COUNT" EntitySet="LOG_PERSO_COUNT" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_PERSO_SUM_VENDOR" Association="Self.LOG_PERSO_SUM_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="LOG_PERSO_COUNT" EntitySet="LOG_PERSO_COUNT" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_USER_MODULE" Association="Self.LOG_USER_MODULE">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="LOG_USER" EntitySet="LOG_USER" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_USER_USER" Association="Self.LOG_USER_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="LOG_USER" EntitySet="LOG_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_ACCESS_GROUP" Association="Self.M_ACCESS_GROUP">
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+      <End Role="M_ACCESS" EntitySet="M_ACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="M_ACCESS_MODULE" Association="Self.M_ACCESS_MODULE">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="M_ACCESS" EntitySet="M_ACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="M_CONFIGURATION_COMPANY" Association="Self.M_CONFIGURATION_COMPANY">
+      <End Role="M_COMPANY" EntitySet="M_COMPANY" />
+      <End Role="M_CONFIGURATION" EntitySet="M_CONFIGURATION" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_COMPANY" Association="Self.M_USER_COMPANY">
+      <End Role="M_COMPANY" EntitySet="M_COMPANY" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_CONTRACT_VENDOR" Association="Self.M_CONTRACT_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="M_CONTRACT" EntitySet="M_CONTRACT" />
+    </AssociationSet>
+    <AssociationSet Name="M_GROUP_ROLE" Association="Self.M_GROUP_ROLE">
+      <End Role="M_ROLE" EntitySet="M_ROLE" />
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_GROUP" Association="Self.M_USER_GROUP">
+      <End Role="M_GROUP" EntitySet="M_GROUP" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_MODULE_ICON" Association="Self.M_MODULE_ICON">
+      <End Role="M_ICON" EntitySet="M_ICON" />
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+    </AssociationSet>
+    <AssociationSet Name="M_MODULE_ROOT" Association="Self.M_MODULE_ROOT">
+      <End Role="M_MODULE" EntitySet="M_MODULE" />
+      <End Role="M_MODULE1" EntitySet="M_MODULE" />
+    </AssociationSet>
+    <AssociationSet Name="M_SETTING_USER" Association="Self.M_SETTING_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="M_SETTING" EntitySet="M_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_THEME" Association="Self.M_USER_THEME">
+      <End Role="M_THEME" EntitySet="M_THEME" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="M_TOKEN_USER" Association="Self.M_TOKEN_USER">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="M_TOKEN" EntitySet="M_TOKEN" />
+    </AssociationSet>
+    <AssociationSet Name="M_USER_VENDOR" Association="Self.M_USER_VENDOR">
+      <End Role="M_VENDOR" EntitySet="M_VENDOR" />
+      <End Role="M_USER" EntitySet="M_USER" />
+    </AssociationSet>
+    <AssociationSet Name="MESSAGE_FROM" Association="Self.MESSAGE_FROM">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="MESSAGE" EntitySet="MESSAGEs" />
+    </AssociationSet>
+    <AssociationSet Name="MESSAGE_TO" Association="Self.MESSAGE_TO">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="MESSAGE" EntitySet="MESSAGEs" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICATION_TO" Association="Self.NOTIFICATION_TO">
+      <End Role="M_USER" EntitySet="M_USER" />
+      <End Role="NOTIFICATION" EntitySet="NOTIFICATIONs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
